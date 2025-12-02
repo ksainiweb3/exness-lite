@@ -1,5 +1,5 @@
 {
-  "name": "exness-dummy",
+  "name": "match-engine",
   "module": "index.ts",
   "type": "module",
   "private": true,
@@ -8,5 +8,11 @@
   },
   "peerDependencies": {
     "typescript": "^5"
+  },
+  "dependencies": {
+    "@types/redis": "^4.0.11",
+    "@types/uuid": "^11.0.0",
+    "redis": "^5.10.0",
+    "uuid": "^13.0.0"
   }
 }
