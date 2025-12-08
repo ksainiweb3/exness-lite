@@ -1,0 +1,17 @@
+{
+  "name": "exness-dummy",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest",
+    "concurrently": "^9.2.1"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "scripts": {
+    "start": "concurrently \"bun poller/index.ts\" \"bun ws/index.ts\" \"bun run client\"",
+    "client": "cd client && bun dev"
+  }
+}
