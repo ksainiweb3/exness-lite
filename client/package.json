@@ -10,11 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tailwindcss/vite": "^4.1.17",
     "@types/ws": "^8.18.1",
     "apexcharts": "^5.3.6",
-    "lightweight-charts": "^5.0.9",
+    "lightweight-charts": "4.2.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "tailwindcss": "^4.1.17",
     "ws": "^8.18.3"
   },
   "devDependencies": {

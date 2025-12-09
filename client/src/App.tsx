@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { type INCOMMING_MESSAGE, type Candle } from "../types";
+import CandleChart from "./components/CHart";
 
 const App = () => {
   const [candles, setCandles] = useState<Record<string, Candle[]>>({});
@@ -38,7 +39,11 @@ const App = () => {
     connectToWS();
   }, []);
 
-  return <div>{JSON.stringify(candles)}</div>;
+  return (
+    <div>
+      <CandleChart candles={candles["SOL_USDC"]} title="SOL_USDC" />
+    </div>
+  );
 };
 
 export default App;

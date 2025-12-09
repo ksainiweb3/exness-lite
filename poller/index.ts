@@ -1,5 +1,6 @@
 import Redis from "ioredis";
 import WebSocket from "ws";
+import type { Candle, Trade } from "./types";
 
 const redis = new Redis();
 
@@ -19,7 +20,7 @@ function connectToBinance() {
 
     redis.set("price.SOL_USDC", JSON.stringify({ price, ts }));
 
-    const interval = Math.floor(ts / 1000);
+    const interval = Math.floor(ts / (60 * 1000));
 
     if (currentInterval === null) {
       currentInterval = interval;
@@ -35,8 +36,8 @@ function connectToBinance() {
     }
 
     if (interval !== currentInterval) {
-      redis.publish("trade.SOL_USDC", JSON.stringify(candle), (data) => {});
-
+      redis.publish("trade.SOL_USDC", JSON.stringify(candle));
+      console.log("Published" + JSON.stringify(candle));
       candle = {
         candel_type: "1m",
         o: price,
@@ -59,23 +60,3 @@ function connectToBinance() {
 }
 
 connectToBinance();
-
-type Trade = {
-  e: string;
-  E: number;
-  T: number;
-  s: string;
-  p: string;
-  q: string;
-  m: boolean;
-  M: boolean;
-};
-
-type Candle = {
-  candel_type: "1m";
-  o: number;
-  h: number;
-  l: number;
-  c: number;
-  ts: number;
-};
