@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "User" ADD COLUMN     "balance" INTEGER NOT NULL DEFAULT 500000,
+ADD COLUMN     "verified" BOOLEAN NOT NULL DEFAULT false;

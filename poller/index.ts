@@ -15,12 +15,13 @@ function connectToBinance() {
 
   ws.on("message", (data) => {
     const trade: Trade = JSON.parse(data.toString());
-    const price = parseFloat(trade.p);
+    console.log(trade.p);
+    const price = Math.round(parseFloat(trade.p) * 10000);
     const ts = trade.T;
 
     redis.set("price.SOL_USDC", JSON.stringify({ price, ts }));
 
-    const interval = Math.floor(ts / (60 * 1000));
+    const interval = Math.floor(ts / 1000);
 
     if (currentInterval === null) {
       currentInterval = interval;

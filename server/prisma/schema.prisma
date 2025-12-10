@@ -18,6 +18,8 @@ model User{
   id String @id @default(cuid())
   email String @unique
   password String
+  verified Boolean @default(false)
+  balance BigInt @default(50000000)
 }
 
 model Trade{
