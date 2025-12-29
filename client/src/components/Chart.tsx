@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { createChart } from "lightweight-charts";
 import type { Candle } from "../../types";
 import type { UTCTimestamp } from "lightweight-charts";
-
+const DECIMAL = 10000;
 export default function CandleChart({
   candles,
   title,
@@ -27,10 +27,10 @@ export default function CandleChart({
       candles.map((candle) => {
         const candleData = {
           time: Math.floor(candle.ts / 1000) as UTCTimestamp,
-          open: candle.o,
-          high: candle.h,
-          low: candle.l,
-          close: candle.c,
+          open: candle.o / DECIMAL,
+          high: candle.h / DECIMAL,
+          low: candle.l / DECIMAL,
+          close: candle.c / DECIMAL,
         };
         console.log(candleData);
         return candleData;
